@@ -5,7 +5,7 @@ if [ ! -f "/etc/openvpn/easy-rsa/pki/ca.crt" ]; then
   cd /etc/openvpn/easy-rsa
   # Init PKI dirs and build CA certs
   ./easyrsa init-pki
-  ./easyrsa build-ca nopass
+  yes "Easy-RSA CA" | ./easyrsa build-ca nopass
   # Generate Diffie-Hellman parameters
   ./easyrsa gen-dh
   # Genrate server keypair
