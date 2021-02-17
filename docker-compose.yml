@@ -73,6 +73,7 @@ services:
     environment:
       - OPENVPN_ADMIN_USER
       - OPENVPN_ADMIN_PASSWORD
+      - OPENVPN_ADMIN_DATABASE
       - OPENVPN_APP_NAME
       - HOST_ADDR
       - HOST_SSL_PORT
