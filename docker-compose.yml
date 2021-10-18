@@ -45,6 +45,8 @@ services:
     image: mariadb
     container_name: db
     restart: always
+    ports:
+    - 3306:3306
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${OPENVPN_ADMIN_DATABASE}
