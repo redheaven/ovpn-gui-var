@@ -23,7 +23,7 @@ fi
 
 # Configure MySQL in openvpn scripts
 sed -i "s/USER=''/USER='$OPENVPN_ADMIN_USER'/" "/etc/openvpn/scripts/config.sh"
-sed -i "s/PASS=.*$/PASS='$OPENVPN_ADMIN_PASSWORD'/" "/etc/openvpn/scripts/config.sh"
+sed -i "s|PASS=.*$|PASS='$OPENVPN_ADMIN_PASSWORD'|" "/etc/openvpn/scripts/config.sh"
 sed -i "s/HOST='localhost'/HOST='$HOST_ADDR'/" "/etc/openvpn/scripts/config.sh"
 
 mkdir /dev/net
