@@ -12,6 +12,7 @@ volumes:
 services:
   openvpn:
     container_name: openvpn
+    image: 373633196736.dkr.ecr.eu-west-2.amazonaws.com/openvpn-server:latest
     build:
       context: .
       dockerfile: Dockerfile_openvpn
@@ -42,7 +43,7 @@ services:
     command: tail -f /dev/null
 
   db:
-    image: mariadb
+    image: 373633196736.dkr.ecr.eu-west-2.amazonaws.com/openvpn-mysql:latest
     container_name: db
     restart: always
     ports:
@@ -63,8 +64,8 @@ services:
   webadmin:
     container_name: webadmin
     depends_on:
-      - db
       - openvpn
+    image: 373633196736.dkr.ecr.eu-west-2.amazonaws.com/openvpn-webui:latest
     build:
         context:  .
         dockerfile: Dockerfile_webadmin
