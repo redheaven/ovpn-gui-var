@@ -16,7 +16,7 @@ for directory in "./client-conf/gnu-linux/" "./client-conf/osx-viscosity/" "./cl
     chown -R www-data:www-data $directory
     # Replace in the client configurations with the ip of the server and openvpn protocol
     file="$directory/client.ovpn";
-    sed -i "s/remote xxx\.xxx\.xxx\.xxx 443/remote $HOST_ADDR $HOST_SSL_PORT/" $file;
+    sed -i "s/remote xxx\.xxx\.xxx\.xxx 443/remote $OPENVPN_SERVER_ADDR $HOST_SSL_PORT/" $file;
     echo "<ca>" >> $file;
     cat "/etc/openvpn/ca.crt" >> $file;
     echo "</ca>" >> $file;
