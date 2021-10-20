@@ -13,9 +13,6 @@ services:
   openvpn:
     container_name: openvpn
     image: 373633196736.dkr.ecr.eu-west-2.amazonaws.com/openvpn-server:latest
-    build:
-      context: .
-      dockerfile: Dockerfile_openvpn
     cap_add:
         - NET_ADMIN
     ports:
@@ -66,9 +63,6 @@ services:
     depends_on:
       - openvpn
     image: 373633196736.dkr.ecr.eu-west-2.amazonaws.com/openvpn-webui:latest
-    build:
-        context:  .
-        dockerfile: Dockerfile_webadmin
     ports:
       - 80:80
     volumes:
@@ -80,5 +74,6 @@ services:
       - OPENVPN_APP_NAME
       - HOST_ADDR
       - HOST_SSL_PORT
+      - OPENVPN_SERVER_ADDR
 
     command: [start.sh]
