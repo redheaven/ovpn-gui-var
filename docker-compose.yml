@@ -59,12 +59,12 @@ services:
         dockerfile: Dockerfile_googleauth
 
   webadmin:
-    container_name: webadmin
+    container_name: webadmin 
     depends_on:
       - openvpn
     image: 373633196736.dkr.ecr.eu-west-2.amazonaws.com/openvpn-webui:latest
     ports:
-      - 80:80
+      - 80:8888
     volumes:
       - openvpn_config:/etc/openvpn
     environment:
