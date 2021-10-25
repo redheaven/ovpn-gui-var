@@ -54,17 +54,18 @@ services:
       - db_data:/var/lib/mysql
   googleauth:
     container_name: googleauth
-    build:
-        context:  .
-        dockerfile: Dockerfile_googleauth
+    image: 373633196736.dkr.ecr.eu-west-2.amazonaws.com/openvpn-googleauth:latest
 
   webadmin:
     container_name: webadmin 
+    build:
+        context:  .
+        dockerfile: Dockerfile_webadmin
     depends_on:
       - openvpn
     image: 373633196736.dkr.ecr.eu-west-2.amazonaws.com/openvpn-webui:latest
     ports:
-      - 80:8888
+      - 8888:80
     volumes:
       - openvpn_config:/etc/openvpn
     environment:
@@ -77,3 +78,4 @@ services:
       - OPENVPN_SERVER_ADDR
 
     command: [start.sh]
+    

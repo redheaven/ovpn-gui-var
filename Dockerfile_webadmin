@@ -1,9 +1,10 @@
 FROM php:7.4-apache
 RUN apt-get update && apt-get install -y git unzip zip git nodejs wget libzip-dev
 RUN docker-php-ext-install pdo pdo_mysql mysqli zip
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && unzip awscliv2.zip && ./aws/install
 
 WORKDIR /root
-RUN git clone https://github.com/redheaven/OpenVPN-Admin.git
+COPY ./php-project /root/OpenVPN-Admin
 
 RUN ["/bin/bash", "-c", "cp -r /root/OpenVPN-Admin/{index.php,authenticator_response.php,sql,bower.json,.bowerrc,js,include,css,installation/client-conf} /var/www/html/"]
 RUN ls -alh /var/www/html/
@@ -27,3 +28,4 @@ RUN npm install -g bower
 RUN bower --allow-root install
 RUN rm -fr /root/OpenVPN-Admin && chown -R www-data:www-data /var/www/html
 COPY ./webadmin/start.sh /usr/local/bin
+
