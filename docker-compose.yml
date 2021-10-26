@@ -58,9 +58,6 @@ services:
 
   webadmin:
     container_name: webadmin 
-    build:
-        context:  .
-        dockerfile: Dockerfile_webadmin
     depends_on:
       - openvpn
     image: 373633196736.dkr.ecr.eu-west-2.amazonaws.com/openvpn-webui:latest
