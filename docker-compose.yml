@@ -40,7 +40,7 @@ services:
     command: tail -f /dev/null
 
   db:
-    image: 373633196736.dkr.ecr.eu-west-2.amazonaws.com/openvpn-mysql:latest
+    image: mariadb:latest
     container_name: db
     restart: always
     ports:
